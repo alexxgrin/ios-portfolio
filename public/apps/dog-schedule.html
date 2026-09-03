@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dog Schedule — Case Study — Alex Grinberg</title>
+<meta name="description" content="Case study: Dog Schedule, a native UIKit + Firebase iOS app for a community of dog owners to walk each other's dogs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="theme-dogschedule">
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="nav-brand" href="/">Alex Grinberg <span>· iOS</span></a>
+    <div class="nav-links">
+      <a href="/#work">Work</a>
+      <a href="/#about">About</a>
+      <a href="/#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="case-hero">
+  <div class="wrap">
+    <a class="back-link" href="/">← Back to all work</a>
+    <div class="eyebrow" style="color:var(--dog-terracotta)">Case study</div>
+    <h1>Dog Schedule</h1>
+    <p class="lede">A native Swift/UIKit + Firebase iOS app for a community of dog owners: list
+    your dogs, offer to walk other people's, book someone nearby to walk yours, track the walk
+    live on a map, and chat with whoever you're working with. There's no fixed "owner" vs.
+    "walker" role — every account can do both, and money is entirely opt-in.</p>
+
+    <div class="case-meta-grid">
+      <div><div class="k">Platform</div><div class="v">iOS · UIKit (programmatic)</div></div>
+      <div><div class="k">Backend</div><div class="v">Firebase (Auth, Firestore, Storage, Functions)</div></div>
+      <div><div class="k">Auth</div><div class="v">Email · Google · Apple · Phone · Guest</div></div>
+      <div><div class="k">Design system</div><div class="v">"Organic" — cream / terracotta / sage, custom, from scratch</div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow" style="color:var(--dog-terracotta)">The problem</div>
+        <h2>Overview</h2>
+        <p>Dog Schedule turns "can you walk my dog" between neighbors into a real product: a
+        community list of nearby people, a booking flow with confirmation and reschedule/rate
+        negotiation, live GPS tracking with poo/pee/pin logging during the walk, a walk report
+        sent to the owner afterward, ratings, and running earnings for anyone who charges. Every
+        account can list dogs <em>and</em> offer to walk — there's no fixed role split, which
+        shaped almost every screen to be direction-agnostic rather than role-gated.</p>
+      </div>
+
+      <div class="illustration-row">
+        <div class="illustration-copy">
+          <span class="illustration-tag" style="color:var(--dog-terracotta)">How it works</span>
+          <p style="color:var(--ink)">Two neighbors, one dog, no fixed roles. Either person can
+          be the one asking or the one walking — the same account does both, so there's no
+          separate "owner" app and "walker" app to design, build, or explain.</p>
+          <p>This is the actual walker-and-dog illustration from the app's own "Organic" design
+          source file — reused here rather than redrawn, to keep the case study honest about
+          what the real design system looks like.</p>
+        </div>
+        <div class="illustration-card dogschedule">
+          <img src="/assets/dogschedule-illustration.png" alt="Flat illustration of a person walking a dog on a leash, in the app's Organic design system style" width="480" height="300">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow" style="color:var(--dog-terracotta)">Getting in</div>
+        <h2>Five ways in, one account model</h2>
+        <p>Email/password, Google, Apple, and phone number all create an account transparently
+        on first use — no separate sign-up step. A fifth path, guest browsing, skips auth
+        entirely and upgrades into a real account later without losing anything.</p>
+      </div>
+      <div class="diagram-card">
+        <svg viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram: five entry paths (email, Google, Apple, phone, guest) converge into one account, with guest upgrading in place via account linking.">
+          <defs>
+            <marker id="arrowD" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#c7684b"></path>
+            </marker>
+            <marker id="arrowDFaint" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#7c8b6f"></path>
+            </marker>
+          </defs>
+          <g font-family="Inter, sans-serif">
+            <!-- entry boxes -->
+            <rect x="20" y="15" width="230" height="46" rx="10" fill="#241e18" stroke="#4a3c2e" stroke-width="1.25"></rect>
+            <text x="135" y="43" text-anchor="middle" fill="#f0e6d8" font-size="12.5" font-weight="600">Email + password</text>
+
+            <rect x="20" y="71" width="230" height="46" rx="10" fill="#241e18" stroke="#4a3c2e" stroke-width="1.25"></rect>
+            <text x="135" y="99" text-anchor="middle" fill="#f0e6d8" font-size="12.5" font-weight="600">Google</text>
+
+            <rect x="20" y="127" width="230" height="46" rx="10" fill="#241e18" stroke="#4a3c2e" stroke-width="1.25"></rect>
+            <text x="135" y="155" text-anchor="middle" fill="#f0e6d8" font-size="12.5" font-weight="600">Sign in with Apple</text>
+
+            <rect x="20" y="183" width="230" height="46" rx="10" fill="#241e18" stroke="#4a3c2e" stroke-width="1.25"></rect>
+            <text x="135" y="211" text-anchor="middle" fill="#f0e6d8" font-size="12.5" font-weight="600">Phone number (SMS OTP)</text>
+
+            <rect x="20" y="239" width="230" height="46" rx="10" fill="#1d211a" stroke="#465340" stroke-width="1.25" stroke-dasharray="4 4"></rect>
+            <text x="135" y="267" text-anchor="middle" fill="#d8e0d0" font-size="12.5" font-weight="600">Continue without login</text>
+
+            <!-- converging curves -->
+            <path d="M250,38 C480,38 560,160 760,160" fill="none" stroke="#c7684b" stroke-width="1.75" marker-end="url(#arrowD)"></path>
+            <path d="M250,94 C480,94 560,160 760,160" fill="none" stroke="#c7684b" stroke-width="1.75" marker-end="url(#arrowD)"></path>
+            <path d="M250,150 C480,150 560,160 760,160" fill="none" stroke="#c7684b" stroke-width="1.75" marker-end="url(#arrowD)"></path>
+            <path d="M250,206 C480,206 560,160 760,160" fill="none" stroke="#c7684b" stroke-width="1.75" marker-end="url(#arrowD)"></path>
+            <path d="M250,262 C480,262 560,180 760,168" fill="none" stroke="#7c8b6f" stroke-width="1.75" stroke-dasharray="5 5" marker-end="url(#arrowDFaint)"></path>
+
+            <!-- account box -->
+            <rect x="760" y="105" width="220" height="110" rx="14" fill="#2a2117" stroke="#c7684b" stroke-width="1.5"></rect>
+            <text x="870" y="140" text-anchor="middle" fill="#c7684b" font-size="11" font-weight="600" letter-spacing="0.04em">ACCOUNT</text>
+            <text x="870" y="163" text-anchor="middle" fill="#f0e6d8" font-size="13.5" font-weight="600">Created transparently</text>
+            <text x="870" y="184" text-anchor="middle" fill="#c9bfae" font-size="10">no separate sign-up step</text>
+            <text x="870" y="200" text-anchor="middle" fill="#96a389" font-size="9.5">guest → linked in place, nothing lost</text>
+          </g>
+        </svg>
+        <div class="diagram-caption">All four real providers land on the same account model. Guest sessions upgrade via Firebase Auth account linking — dogs and history added as a guest carry over.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow" style="color:var(--dog-terracotta)">Core flow</div>
+        <h2>Booking a walk, either direction</h2>
+        <p>There's no fixed "who can ask whom" — either side can be the requester. A request
+        becomes one order-summary screen that adapts its buttons to whatever's actually
+        actionable, and either party can renegotiate time or rate at any point before it's done.</p>
+      </div>
+      <div class="diagram-card">
+        <svg viewBox="0 0 1000 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flow diagram: browse community, request a walk, order summary confirm or decline, start walk with live map, walk report, then rating. A reschedule or rate proposal loop branches off the order summary step.">
+          <defs>
+            <marker id="arrowD2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0,0 L10,5 L0,10 z" fill="#c7684b"></path>
+            </marker>
+          </defs>
+          <g font-family="Inter, sans-serif">
+            <!-- 1 -->
+            <rect x="20" y="90" width="140" height="94" rx="12" fill="#241e18" stroke="#4a3c2e" stroke-width="1.25"></rect>
+            <text x="90" y="122" text-anchor="middle" fill="#c7684b" font-size="10.5" font-weight="600" letter-spacing="0.03em">01</text>
+            <text x="90" y="144" text-anchor="middle" fill="#f0e6d8" font-size="12.5" font-weight="600">Browse</text>
+            <text x="90" y="160" text-anchor="middle" fill="#f0e6d8" font-size="12.5" font-weight="600">Community</text>
+
+            <path d="M160,137 L180,137" stroke="#c7684b" stroke-width="2" marker-end="url(#arrowD2)"></path>
+
+            <!-- 2 -->
+            <rect x="180" y="90" width="140" height="94" rx="12" fill="#241e18" stroke="#4a3c2e" stroke-width="1.25"></rect>
+            <text x="250" y="122" text-anchor="middle" fill="#c7684b" font-size="10.5" font-weight="600" letter-spacing="0.03em">02</text>
+            <text x="250" y="144" text-anchor="middle" fill="#f0e6d8" font-size="12.5" font-weight="600">Request a</text>
+            <text x="250" y="160" text-anchor="middle" fill="#f0e6d8" font-size="12.5" font-weight="600">walk</text>
+
+            <path d="M320,137 L340,137" stroke="#c7684b" stroke-width="2" marker-end="url(#arrowD2)"></path>
+
+            <!-- 3 order summary -->
+            <rect x="340" y="90" width="150" height="94" rx="12" fill="#2a2117" stroke="#c7684b" stroke-width="1.5"></rect>
+            <text x="415" y="118" text-anchor="middle" fill="#c7684b" font-size="10.5" font-weight="600" letter-spacing="0.03em">03</text>
+            <text x="415" y="140" text-anchor="middle" fill="#f0e6d8" font-size="12.5" font-weight="600">Order summary</text>
+            <text x="415" y="158" text-anchor="middle" fill="#c9bfae" font-size="10">Confirm / Decline</text>
+            <text x="415" y="172" text-anchor="middle" fill="#c9bfae" font-size="10">or Accept a rate</text>
+
+            <path d="M490,137 L510,137" stroke="#c7684b" stroke-width="2" marker-end="url(#arrowD2)"></path>
+
+            <!-- 4 start walk -->
+            <rect x="510" y="90" width="150" height="94" rx="12" fill="#241e18" stroke="#4a3c2e" stroke-width="1.25"></rect>
+            <text x="585" y="118" text-anchor="middle" fill="#c7684b" font-size="10.5" font-weight="600" letter-spacing="0.03em">04</text>
+            <text x="585" y="140" text-anchor="middle" fill="#f0e6d8" font-size="12.5" font-weight="600">Start walk</text>
+            <text x="585" y="158" text-anchor="middle" fill="#c9bfae" font-size="10">live map · poo/pee/pin</text>
+
+            <path d="M660,137 L680,137" stroke="#c7684b" stroke-width="2" marker-end="url(#arrowD2)"></path>
+
+            <!-- 5 walk report -->
+            <rect x="680" y="90" width="150" height="94" rx="12" fill="#241e18" stroke="#4a3c2e" stroke-width="1.25"></rect>
+            <text x="755" y="118" text-anchor="middle" fill="#c7684b" font-size="10.5" font-weight="600" letter-spacing="0.03em">05</text>
+            <text x="755" y="140" text-anchor="middle" fill="#f0e6d8" font-size="12.5" font-weight="600">Walk report</text>
+            <text x="755" y="158" text-anchor="middle" fill="#c9bfae" font-size="10">sent to the owner</text>
+
+            <path d="M830,137 L850,137" stroke="#c7684b" stroke-width="2" marker-end="url(#arrowD2)"></path>
+
+            <!-- 6 rating -->
+            <rect x="850" y="90" width="130" height="94" rx="12" fill="#241e18" stroke="#4a3c2e" stroke-width="1.25"></rect>
+            <text x="915" y="118" text-anchor="middle" fill="#c7684b" font-size="10.5" font-weight="600" letter-spacing="0.03em">06</text>
+            <text x="915" y="140" text-anchor="middle" fill="#f0e6d8" font-size="12.5" font-weight="600">Rating</text>
+            <text x="915" y="158" text-anchor="middle" fill="#c9bfae" font-size="10">1–5 ★</text>
+
+            <!-- branch loop from box 3 -->
+            <path d="M400,184 C400,225 335,225 335,255 C335,285 400,285 400,255" fill="none" stroke="#7c8b6f" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#arrowD2)"></path>
+            <rect x="255" y="255" width="320" height="66" rx="12" fill="#1d211a" stroke="#465340" stroke-width="1.25"></rect>
+            <text x="415" y="280" text-anchor="middle" fill="#96a389" font-size="10.5" font-weight="600" letter-spacing="0.03em">EITHER SIDE, ANYTIME</text>
+            <text x="415" y="300" text-anchor="middle" fill="#d8e0d0" font-size="11.5">Propose a new time or rate — Accept / Decline / Withdraw</text>
+          </g>
+        </svg>
+        <div class="diagram-caption">Requesting, tracking, reporting, and rating a walk — with reschedule and rate negotiation as an independent side-loop rather than a blocking step.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow" style="color:var(--dog-terracotta)">Features</div>
+        <h2>What's built</h2>
+      </div>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <span class="icon">🐕</span>
+          <h4>Manage Dogs</h4>
+          <p>Photo-forward grid of your dogs; a dog can be shared with someone from your
+          conversations so they can walk it solo without becoming a co-owner.</p>
+        </div>
+        <div class="feature-card">
+          <span class="icon">🗺️</span>
+          <h4>Live walk tracking</h4>
+          <p>MapKit + Core Location distance/duration tracking, with Poo, Pee, and Drop Pin
+          logging that all surface on the walk's history map afterward.</p>
+        </div>
+        <div class="feature-card">
+          <span class="icon">💬</span>
+          <h4>Chat</h4>
+          <p>Real-time Firestore-backed conversations, photo and document attachments, and
+          tappable system messages that jump straight to the related walk/request.</p>
+        </div>
+        <div class="feature-card">
+          <span class="icon">💰</span>
+          <h4>Availability &amp; earnings</h4>
+          <p>Opt-in hourly rate, a recurring or calendar-range weekly schedule, and an earnings
+          chart computed from each walk's actual agreed rate — never a flat estimate.</p>
+        </div>
+        <div class="feature-card">
+          <span class="icon">🔔</span>
+          <h4>Push notifications</h4>
+          <p>Cloud Functions send one notification per event — new message, new request,
+          confirmed/declined, walk started, report sent, rating submitted.</p>
+        </div>
+        <div class="feature-card">
+          <span class="icon">🌐</span>
+          <h4>Full localization</h4>
+          <p>English and Hebrew via a String Catalog, ~540 strings, including right-to-left
+          layout — follows the device setting or an in-app override.</p>
+        </div>
+        <div class="feature-card">
+          <span class="icon">🔒</span>
+          <h4>Face ID app lock</h4>
+          <p>Opt-in, device-local lock shown on cold launch and on returning from background —
+          the one place biometrics adds real protection since Firebase Auth otherwise re-signs
+          in silently.</p>
+        </div>
+        <div class="feature-card">
+          <span class="icon">📤</span>
+          <h4>Download my data / delete account</h4>
+          <p>A full JSON export of everything tied to your account via the system share sheet,
+          entirely on-device — the non-destructive counterpart to account deletion.</p>
+        </div>
+        <div class="feature-card">
+          <span class="icon">🌙</span>
+          <h4>Night Mode</h4>
+          <p>A live in-app dark theme independent of system Dark Mode — every design-system
+          color resolves to a light/dark pair, flipped with no restart needed.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow" style="color:var(--dog-terracotta)">Screens</div>
+        <h2>Key views</h2>
+      </div>
+      <table class="screens-table">
+        <thead><tr><th>Screen</th><th>What it's for</th></tr></thead>
+        <tbody>
+          <tr><td>Home ("Community")</td><td>Quick actions, nearby people preview, upcoming/recent walks in both directions</td></tr>
+          <tr><td>Community list</td><td>Everyone nearby with an availability badge and filter pills</td></tr>
+          <tr><td>Person profile</td><td>Stats, bio, weekly availability, "Ask them to walk" / "Message"</td></tr>
+          <tr><td>Request a walk</td><td>Pick dog(s), date/time, note, "I'll come too", propose a rate</td></tr>
+          <tr><td>Order summary</td><td>One screen for every request status, either direction</td></tr>
+          <tr><td>Active walk (map)</td><td>Live tracking + poo/pee/pin logging</td></tr>
+          <tr><td>Walk report</td><td>Stats, route sketch, photos, note — reviewed before sending</td></tr>
+          <tr><td>Manage Dogs / Dog Profile</td><td>Add, edit, delete, and share a dog</td></tr>
+          <tr><td>Availability &amp; rate</td><td>Opt-in walking, hourly rate, recurring or calendar schedule</td></tr>
+          <tr><td>Earnings</td><td>Monthly total + Sun–Sat bar chart</td></tr>
+          <tr><td>Chat list / thread</td><td>Live conversations, photo/document attachments</td></tr>
+          <tr><td>Profile hub (Settings)</td><td>Edit profile, Face ID lock, Night Mode, data export, delete account</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow" style="color:var(--dog-terracotta)">Engineering notes</div>
+        <h2>A few of the harder problems</h2>
+      </div>
+      <div class="notes-list">
+        <div class="note-item dogschedule">
+          <h4>Two independent proposal types on one booking</h4>
+          <p>A reschedule proposal (<code>proposedDate</code>/<code>proposedByUid</code>) and a
+          rate proposal (<code>proposedRate</code>/<code>rateProposedByUid</code>) are tracked as
+          separate field pairs, so one outstanding time proposal and one outstanding rate
+          proposal — even from two different people — never clobber each other's attribution.</p>
+        </div>
+        <div class="note-item dogschedule">
+          <h4>Guest sessions that don't lose data</h4>
+          <p>Browsing without an account starts a real anonymous Firebase Auth session. Signing
+          up later upgrades that same session in place via Firebase's account-linking, rather
+          than starting over — dogs added and walks taken as a guest carry through untouched.</p>
+        </div>
+        <div class="note-item dogschedule">
+          <h4>Hebrew / RTL as a first-class layout, not an afterthought</h4>
+          <p>Full right-to-left support via a String Catalog (~540 strings), with a real gotcha
+          around how <code>String(localized:)</code> keys strings that contain interpolation —
+          documented as a standing gotcha for anyone adding new user-facing copy.</p>
+        </div>
+        <div class="note-item dogschedule">
+          <h4>Push notifications depend on a chain outside the code</h4>
+          <p>Without an APNs Authentication Key configured in the Firebase console, every send
+          fails with a third-party-auth error even though client-side registration looks
+          completely fine — a failure mode that's invisible from the client alone.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow" style="color:var(--dog-terracotta)">Design system</div>
+        <h2>"Organic"</h2>
+        <p>A warm, hand-drawn-feeling visual language across the entire app — pill-shaped
+        components, a full color ramp, and a complete Night Mode counterpart for every token.</p>
+      </div>
+      <div class="swatch-row">
+        <span class="swatch"><i style="background:#f4e9d8"></i>Cream</span>
+        <span class="swatch"><i style="background:#c7684b"></i>Terracotta</span>
+        <span class="swatch"><i style="background:#7c8b6f"></i>Sage</span>
+        <span class="swatch"><i style="background:#221d17"></i>Ink</span>
+      </div>
+      <p style="margin-top:16px">Bundled fonts: <b style="color:var(--ink)">Outfit</b> for
+      headings, <b style="color:var(--ink)">Figtree</b> for body copy.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="case-cta">
+        <div>
+          <h3 style="margin-bottom:4px">Next: Parking Share</h3>
+          <p style="margin:0">A tight, permissioned system for a physical space — rules enforced end to end.</p>
+        </div>
+        <a class="btn" href="/apps/parking-share">View case study →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Alex Grinberg — iOS Developer Portfolio</span>
+    <span><a href="mailto:alexxgrin@gmail.com">alexxgrin@gmail.com</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

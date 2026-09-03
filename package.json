@@ -1,0 +1,13 @@
+{
+  "name": "ios-portfolio",
+  "version": "1.0.0",
+  "description": "Portfolio site showcasing iOS app case studies",
+  "private": true,
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

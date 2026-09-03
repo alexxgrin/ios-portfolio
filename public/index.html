@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alex Grinberg — iOS Developer</title>
+<meta name="description" content="iOS developer portfolio — case studies for Parking Share and Dog Schedule, two native Swift + Firebase apps.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="nav-brand" href="/">Alex Grinberg <span>· iOS</span></a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Available for iOS opportunities</div>
+    <h1>I design and build native iOS apps end to end — UI, data model, and the backend behind them.</h1>
+    <p class="lede">
+      Two shipped-quality products below, both built solo: SwiftUI + UIKit front ends on a real
+      Firebase backend (Auth, Firestore, Storage, Cloud Functions), with real security rules,
+      real edge cases, and a custom design system for each.
+    </p>
+    <div class="hero-meta">
+      <span class="pill">Swift · SwiftUI · UIKit</span>
+      <span class="pill">Firebase (Auth · Firestore · Storage · Functions)</span>
+      <span class="pill">MapKit · Push Notifications</span>
+      <span class="pill">Design systems from scratch</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section" id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="eyebrow">Case studies</div>
+        <h2>Two apps, two different problems</h2>
+        <p>One is a tight, permissioned two-role system for a physical space. The other is an
+        open marketplace with chat, live tracking, and money — deliberately different shapes,
+        picked to cover different iOS problems.</p>
+      </div>
+
+      <div class="projects-grid">
+        <a class="project-card" href="/apps/parking-share">
+          <div class="project-banner parking">
+            <span class="role-tag">Admin + Resident roles</span>
+          </div>
+          <div class="project-body">
+            <h3>Parking Share</h3>
+            <p class="tagline">Lets apartment residents share their parking spot when they're not
+            using it — an admin manages the building, residents manage their own spot and schedule.</p>
+            <div class="tech-row">
+              <span class="tech-chip">SwiftUI</span>
+              <span class="tech-chip">Firebase Auth (phone + email)</span>
+              <span class="tech-chip">Firestore + security rules</span>
+              <span class="tech-chip">Custom fonts &amp; design system</span>
+            </div>
+            <div class="card-cta">View case study <span class="arrow">→</span></div>
+          </div>
+        </a>
+
+        <a class="project-card" href="/apps/dog-schedule">
+          <div class="project-banner dogschedule">
+            <span class="role-tag">Community marketplace</span>
+          </div>
+          <div class="project-body">
+            <h3>Dog Schedule</h3>
+            <p class="tagline">A community of dog owners who list their dogs, walk each other's,
+            track walks live on a map, chat, and get paid — every account can be both sides.</p>
+            <div class="tech-row">
+              <span class="tech-chip">UIKit (programmatic)</span>
+              <span class="tech-chip">Firebase Auth (4 providers)</span>
+              <span class="tech-chip">MapKit + Core Location</span>
+              <span class="tech-chip">Push notifications (Cloud Functions)</span>
+            </div>
+            <div class="card-cta">View case study <span class="arrow">→</span></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div>
+          <div class="eyebrow">About</div>
+          <h2>Why these two projects</h2>
+          <p>Both apps were built solo, top to bottom — product decisions, UI, data modeling,
+          backend rules, and the unglamorous parts (security rules that actually hold up under a
+          hostile client, push notification plumbing, localization, accessibility toggles like
+          Face ID app-lock). Each one has its own from-scratch visual design system rather than
+          reusing a template, because the interaction model is different enough to need it:
+          Parking Share is a permissioned, physical-space system; Dog Schedule is an open,
+          two-sided marketplace with real-time chat and live location tracking.</p>
+          <p>Open the case studies for the actual flows, the data model, and a few of the
+          harder problems solved along the way — a Firestore rules bug that only failed in
+          combination, RTL/Hebrew localization, and reconciling two independent proposal types
+          (time vs. rate) on the same booking without one clobbering the other.</p>
+        </div>
+        <div class="stat-list">
+          <div class="stat"><b>2</b><span>Full products shipped solo, front to back</span></div>
+          <div class="stat"><b>Swift</b><span>SwiftUI and UIKit, both used natively — not cross-platform</span></div>
+          <div class="stat"><b>Firebase</b><span>Auth, Firestore, Storage, Cloud Functions, Hosting</span></div>
+          <div class="stat"><b>EN / HE</b><span>Full localization including right-to-left layout</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <span>Alex Grinberg — iOS Developer Portfolio</span>
+    <span><a href="mailto:alexxgrin@gmail.com">alexxgrin@gmail.com</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -269,6 +269,7 @@ footer {
 }
 footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
 footer a:hover { color: var(--ink-soft); }
+.footer-links { display: flex; gap: 16px; }
 
 /* ---------- Case study pages ---------- */
 .case-hero {

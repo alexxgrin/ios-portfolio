@@ -1,0 +1,25 @@
+public/index.html
+  s_063d8ae51378ec::t_499d6e91d8aba8 131-134
+public/apps/parking-share.html
+  s_063d8ae51378ec::t_4d92b6e2619014 368-371
+public/apps/dog-schedule.html
+  s_063d8ae51378ec::t_b48f1ecdd6e8a9 373-376
+public/css/style.css
+  s_063d8ae51378ec::t_9bd8c84a824752 272
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.2",
+  "base_commit_sha": "9f76c135cba5ccc45a341363975fe606d37d971c",
+  "prompts": {},
+  "sessions": {
+    "s_063d8ae51378ec": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8d20efce-f2a5-4643-a614-d626da080671",
+        "model": "claude-sonnet-5"
+      },
+      "human_author": "Alex Grinberg <alexxgrin@gmail.com>"
+    }
+  }
+}

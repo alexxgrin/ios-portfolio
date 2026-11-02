@@ -438,3 +438,30 @@ footer a:hover { color: var(--ink-soft); }
   .section { padding: 48px 0; }
   .nav-links { gap: 16px; }
 }
+
+/* ---------- App Store links ---------- */
+.card-actions {
+  margin-top: auto;
+  padding-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.card-actions .card-cta { margin-top: 0; padding-top: 0; }
+.card-link::after { content: ''; position: absolute; inset: 0; }
+.project-card:has(.card-link:hover) { transform: translateY(-3px); border-color: var(--ink-faint); }
+.store-badge {
+  position: relative;
+  z-index: 2;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--ink-faint);
+  color: var(--ink);
+  background: var(--bg-raised);
+}
+.store-badge:hover { border-color: var(--ink); }
+.case-hero .hero-cta { margin-top: 24px; }
